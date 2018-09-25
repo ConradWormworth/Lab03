@@ -1,6 +1,6 @@
 <%-- 
     Document   : viewNote
-    Created on : Sep 25, 2018, 9:51:02 AM
+    Created on : Sep 25, 2018, 11:57:46 AM
     Author     : 612944
 --%>
 
@@ -12,6 +12,9 @@
         <title>Simple Note Keeper</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Title: ${note.title}</h1><br>
+        Contents: ${note.noteEntry}<br><br>
+        
+        <a href="note?edit">Edit</a>
     </body>
 </html>

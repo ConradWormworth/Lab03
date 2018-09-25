@@ -5,7 +5,14 @@
  */
 package models;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -20,9 +27,23 @@ public class Note implements Serializable{
         
     }
 
-    public Note(String title, String noteEntry){
-        this.title = title;
-        this.noteEntry = noteEntry;
+    public Note(String path){
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(new
+                File(path)));
+            
+            title = br.readLine();
+            noteEntry = br.readLine();
+            
+            br.close();
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Note.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Note.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
     }
     
     public String getTitle() {
